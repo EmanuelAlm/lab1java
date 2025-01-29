@@ -54,9 +54,35 @@ public abstract class Cars implements Movable {
 
     protected abstract double speedFactor();
 
-    protected abstract void incrementSpeed(double amount);
+    public double[] getPos() {
+        return pos;
+    }
 
-    protected abstract void decrementSpeed(double amount);
+    public int[] getDirection() {
+        return direction;
+    }
+
+    public void gas(double amount){
+        if (amount < 0 || amount > 1) {
+            throw new IllegalArgumentException("Värdet måste ligga i intervallet 0 till 1");
+        }
+            else incrementSpeed(amount);
+    }
+
+    public void brake(double amount){
+        if (amount < 0 || amount > 1) {
+            throw new IllegalArgumentException("Värdet måste ligga i intervallet 0 till 1");
+        }
+            else decrementSpeed(amount);
+    }
+
+    protected void incrementSpeed(double amount){
+        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount,getEnginePower());
+    }
+
+    protected void decrementSpeed(double amount){
+        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
+    }
 
     @Override
     public void move() {
