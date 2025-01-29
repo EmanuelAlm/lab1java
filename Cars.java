@@ -8,16 +8,14 @@ public abstract class Cars implements Movable {
     private final double enginePower; // Engine power of the car
     protected double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
-    private final String modelName; // The car model name
     protected double[] pos;
     protected int[] direction;
 
 
-    public Cars(int nrDoors, Color color, double enginePower, String modelName){
+    public Cars(int nrDoors, Color color, double enginePower){
         this.nrDoors = nrDoors;
         this.color = color;
         this.enginePower = enginePower;
-        this.modelName = modelName;
 
         // Always initialize pos and direction to default values
         this.pos = new double[]{0, 0};    // Initial position (x = 0, y = 0)
@@ -68,27 +66,18 @@ public abstract class Cars implements Movable {
 
     @Override
     public void turnLeft() {
-        direction
+        int newX = -direction[1];
+        int newY = direction[0];
+        direction[0] = newX;
+        direction[1] = newY;
     }
 
     @Override
     public void turnRight() {
-
+        int newX = direction[1];
+        int newY = -direction[0];
+        direction[0] = newX;
+        direction[1] = newY;
     }
 }
-
-[0,1]
-// left
-
-[-1,0]
-
-// left
-
-[0,-1]
-
-// left
-
-[1,0]
-
-
 
