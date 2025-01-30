@@ -8,8 +8,8 @@ public abstract class Cars implements Movable {
     private final double enginePower; // Engine power of the car
     protected double currentSpeed; // The current speed of the car, needs to be protected in order for tests to work
     private Color color; // Color of the car
-    protected double[] pos;
-    protected int[] direction;
+    private final double[] pos;
+    private final int[] direction;
 
 
     public Cars(int nrDoors, Color color, double enginePower){
@@ -80,7 +80,7 @@ public abstract class Cars implements Movable {
         currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount,getEnginePower());
     }
 
-    protected void decrementSpeed(double amount){
+    private void decrementSpeed(double amount){
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
     }
 
