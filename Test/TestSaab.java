@@ -62,6 +62,24 @@ public class TestSaab {
     }
 
     @Test
+    public void testGasException() {
+        Saab95 saab = new Saab95();
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            saab.gas(1.5);
+        });
+        assertEquals("Värdet måste ligga i intervallet 0 till 1", exception.getMessage());
+    }
+
+    @Test
+    public void testBrakeException() {
+        Saab95 saab = new Saab95();
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            saab.brake(1.5);
+        });
+        assertEquals("Värdet måste ligga i intervallet 0 till 1", exception.getMessage());
+    }
+
+    @Test
     public void testBrake (){
         Saab95 saab = new Saab95();
         saab.startEngine();
@@ -85,4 +103,33 @@ public class TestSaab {
         assertEquals(0, saab.getCurrentSpeed(), 0.0);
     }
 
+    @Test
+    public void testTurnLeft(){
+        Saab95 saab = new Saab95();
+        saab.turnLeft();
+        assertEquals(-1 ,saab.getDirection()[0]);
+        assertEquals(0 ,saab.getDirection()[1]);
+        saab.turnLeft();
+        assertEquals(0 ,saab.getDirection()[0]);
+        assertEquals(-1 ,saab.getDirection()[1]);
+    }
+
+    @Test
+    public void testTurnRight(){
+        Saab95 saab = new Saab95();
+        saab.turnRight();
+        assertEquals(1 ,saab.getDirection()[0]);
+        assertEquals(0 ,saab.getDirection()[1]);
+        saab.turnRight();
+        assertEquals(0 ,saab.getDirection()[0]);
+        assertEquals(-1 ,saab.getDirection()[1]);
+    }
+    @Test
+    public void testMove () {
+        Saab95 saab = new Saab95();
+        saab.startEngine();
+        saab.move();
+        assertEquals(0.0, saab.getPos()[0],0.0);
+        assertEquals(0.1, saab.getPos()[1], 0.0);
+    }
 }

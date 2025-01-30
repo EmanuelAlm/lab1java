@@ -6,7 +6,7 @@ import java.awt.*;
 public abstract class Cars implements Movable {
     private final int nrDoors; // Number of doors on the car
     private final double enginePower; // Engine power of the car
-    protected double currentSpeed; // The current speed of the car
+    protected double currentSpeed; // The current speed of the car, needs to be protected in order for tests to work
     private Color color; // Color of the car
     protected double[] pos;
     protected int[] direction;
