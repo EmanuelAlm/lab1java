@@ -76,7 +76,7 @@ public abstract class Cars implements Movable {
             else decrementSpeed(amount);
     }
 
-    protected void incrementSpeed(double amount){
+    private void incrementSpeed(double amount){
         currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount,getEnginePower());
     }
 

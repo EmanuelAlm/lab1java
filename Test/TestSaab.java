@@ -73,7 +73,7 @@ public class TestSaab {
     @Test
     public void testBrakeException() {
         Saab95 saab = new Saab95();
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+        IllegalArgumentException exception = assertThrows( IllegalArgumentException.class, () -> {
             saab.brake(1.5);
         });
         assertEquals("Värdet måste ligga i intervallet 0 till 1", exception.getMessage());
