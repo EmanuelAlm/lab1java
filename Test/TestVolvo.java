@@ -68,5 +68,35 @@ public class TestVolvo {
         assertEquals(0, volvo.getCurrentSpeed(), 0.0);
     }
 
+    @Test
+    public void testMove () {
+        Volvo240 volvo = new Volvo240();
+        volvo.startEngine();
+        volvo.move();
+        assertEquals(0.0, volvo.getPos()[0],0.0);
+        assertEquals(0.1, volvo.getPos()[1], 0.0);
+    }
+
+    @Test
+    public void testTurnLeft(){
+        Volvo240 volvo = new Volvo240();
+        volvo.turnLeft();
+        assertEquals(-1 ,volvo.getDirection()[0]);
+        assertEquals(0 ,volvo.getDirection()[1]);
+        volvo.turnLeft();
+        assertEquals(0 ,volvo.getDirection()[0]);
+        assertEquals(-1 ,volvo.getDirection()[1]);
+    }
+
+    @Test
+    public void testTurnRight(){
+        Volvo240 volvo = new Volvo240();
+        volvo.turnRight();
+        assertEquals(1 ,volvo.getDirection()[0]);
+        assertEquals(0 ,volvo.getDirection()[1]);
+        volvo.turnRight();
+        assertEquals(0 ,volvo.getDirection()[0]);
+        assertEquals(-1 ,volvo.getDirection()[1]);
+    }
 
 }
