@@ -41,8 +41,20 @@ public class TestVolvo {
         double startSpeed = volvo.getCurrentSpeed();
         volvo.gas(0.3);
         assertTrue(volvo.getCurrentSpeed() > startSpeed);
-
     }
+
+    @Test
+    public void testGasException() {
+    Volvo240 volvo = new Volvo240();
+    //volvo.startEngine();
+    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+        volvo.gas(1.5);
+    });
+    assertEquals("Värdet måste ligga i intervallet 0 till 1", exception.getMessage());
+    }
+
+
+
 
     @Test
     public void testBrake (){
@@ -51,6 +63,15 @@ public class TestVolvo {
         double startSpeed = volvo.getCurrentSpeed();
         volvo.brake(0.1);
         assertTrue(volvo.getCurrentSpeed() < startSpeed);
+    }
+
+    @Test
+    public void testBrakeException() {
+        Volvo240 volvo = new Volvo240();
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            volvo.brake(1.5);
+        });
+        assertEquals("Värdet måste ligga i intervallet 0 till 1", exception.getMessage());
     }
 
     @Test
